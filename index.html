@@ -1,0 +1,68 @@
+
+<html ng-app = 'employeeDemoApp'>
+<head>
+<script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script src = "//ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+<script src = "js/app.js"></script>
+</head>
+<body ng-controller = "employeeCtrl">
+<h1>Welcome To Navtech!</h1>
+<h2>Please Enter The Details Below:</h2>
+    <form name = "employeeForm">
+    <label>First Name:</label>
+    <input type = "text" name = "userFirstName" ng-model = "firstName"  ng-pattern = "/[a-zA-Z]/"required/>
+    <div ng-messages = "employeeForm.userFirstName.$error">
+      <div ng-message = "required">*This field is required</div><br/>
+      <div ng-message = "pattern">*This field is invalid</div>
+    </div>
+    <label>Last Name:</label>
+    <input type = "text" name = "userLastName" ng-model = "lastName" ng-pattern = "/[a-zA-Z]/" required />
+    <div ng-messages = "employeeForm.userLastName.$error">
+      <div ng-message = "required">*This field is required</div><br/>
+       <div ng-message = "pattern">*This field is invalid</div>
+    </div>
+    <label>Email ID:</label>
+    <input type = "email" name = "userEmail" ng-model = "email" required />
+    <div ng-messages = "employeeForm.userEmail.$error">
+      <div ng-message = "required">*This field is required</div>
+      <div ng-message = "email">*Your email id is invalid</div>
+    </div><br/>
+
+<label>Enter Password:</label><br/>
+<input type = "text" name = "enterpassword" ng-model = "enterpassword" ng-pattern = "/^[0-9a-zA-Z]+$/" required /><br/>
+<div class = "form">
+<form name = "employeeform" 
+<li class = "rq">*Must have alphabets, atleast one number and one special character.</li><br/>
+<div ng-message = "pattern">*Your password is invalid</div>
+</form>
+</div>
+<label>Confirm Password:</label><br/>
+<input type = "text" id = "confirmpassword" ng-model = "employee.confirmpassword"/><br/>
+<div class="form">
+<form name="employeeform" 
+<li class="rq">*Must have alphabets, atleast one number and one special character.</li><br/>
+</form>
+</div>
+<label>DOB:</label><br/>
+<input type = "date" id = "dob" ng-model = "employee.DOB"/><br/><br/>
+<label>Gender</label><br/>
+<select id = "gender" ng-model = "employee.gender">
+<option value = "male">Male</option>
+<option value = "female">Female</option>
+</select><br/><br/>
+<span>Profession:</span><br/>
+<label><input value = "IT" type = "radio" ng-model = "employee.itprofession"/>IT</label><br/>
+<label><input value = "Non-IT" type = "radio" ng-model = "employee.nonitprofession"/>Non-IT</label>
+<br/>
+<label><input value = "Others" type = "radio" ng-model = "employee.othersprofession"/>Others</label>
+<br><br/>
+<span>Designation</span><br/>
+<label><input type = "checkbox" ng-model = "employee.developer">Developer</label><br/>
+<label><input type = "checkbox" ng-model = "employee.qa_analyst">QA-Analyst</label><br/>
+<label><input type = "checkbox" ng-model = "employee.programmer">Programmer</label><br/>
+<label><input type = "checkbox" ng-model = "employee.others">Others</label><br/><br/>
+<input type = "submit" ng-click = "submitForm()" value = "submit"/>
+<input type = "reset" ng-click = "resetform()" value = "Reset"/>
+</form>
+</body>
+</html>

@@ -1,27 +1,31 @@
- 'use strict';
-  var App = angular.module('employeeDemoApp',['ngMessages']);
+ 
+var App = angular.module('employeeDemoApp',['ui.router', 'ngMessages']);
 
-  angular.module('employeeDemoApp').controller('employeeCtrl', function($scope){
+App.config(function($stateProvider, $urlRouterProvider){
+				
+			$stateProvider
+		        .state('employees', {
+					url: "/employees",
+					templateUrl: "views/employees/list.html",
+					controller: "employeesCtrl"
+				})
+				.state('employees_edit', {
+					url: "/:id/edit",
+					templateUrl: "views/employees/edit.html",
+					controller: "employeesCtrl"
+				})
+				.state('employees_new', {
+					url: "/new",
+					templateUrl: "views/employees/new.html",
+					controller: "employeesCtrl"
+				});
+
+							
+				$urlRouterProvider.otherwise("/employees")	
+			});
+
+	
 
 
-  $scope.submitForm = function(){
-    console.log('user name : ' + $scope.userfullName);
-    console.log('user email : ' +$scope.useremail);
-    console.log('user password :' +$scope.userpassword);
-    console.log('user dob:' +$scope.userdob);
-    console.log('user gender :' +$scope.usergender);
-    console.log('user profession :' +$scope.userprofession);
-    console.log('user designation :' +$scope.userdesignation)
 
-  function Validate() {
-        var enterpassword = document.getElementById("txtenterPassword").value;
-        var confirmPassword = document.getElementById("txtConfirmPassword").value;
-        if (enterpassword != confirmPassword) {
-            alert("Passwords do not match.");
-            return false;
-        }
-        return true;
-    }
-    }
-   });
 

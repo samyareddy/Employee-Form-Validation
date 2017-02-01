@@ -26,42 +26,32 @@
   </div>
 
 <label>Enter Password:</label>
-<input type = "text" id = "enterpassword" name = "employee.enterpassword" ng-model = "employee.password" ng-pattern = "/^[0-9a-zA-Z]+$/" required />
+<input type = "password" id = "password" name = "employee.enterpassword" ng-model = "employee.enterpassword" ng-pattern = "/^[0-9a-zA-Z]+$/" required />
 <div ng-messages = "employeeForm.password.$error">
   <div ng-message = "name">*Your password is invalid</div><br/>
   <div ng-message = "pattern">*Your password is invalid</div>
 </div>
 
-<label>Confirm Password:</label><br/>
-<input type = "text" id = "confirmpassword" name = "employee.confirmpassword" ng-model="employee.confirmpassword"required />
-<div ng-messages = "employeeForm.confirmpassword.$error">
-  <div ng-message = "name">*Your password is invalid</div><br/>
-  <div ng-message = "pattern">*Your password is invalid</div>
-</div>
 
 <label>DOB:</label><br/>
-<input type = "date" id = "dob" ng-model = "employee.dob"/><br/><br/>
-<label>Gender</label><br/>
-<select id = "gender" ng-model = "employee.gender">
-<option value = "male">Male</option>
-<option value = "female">Female</option><br/>
+<input type = "date" id = "dob" name = "employee.dob" ng-model = "employee.dob"/><br/><br/>
+
+<label>Gender:</label><br/>
+<label><input value = "male" type = "radio" name="gender" ng-model = "employee.gender"/>Male</label>
+<label><input value = "female" type = "radio" name="gender" ng-model = "employee.gender"/>Female</label><br/><br/>
+
+
+
+<label>Designation:</label><br/>
+<select id = "designation" ng-model = "employee.designation">
+<option value = "developer">Developer</option>
+<option value = "qa_analyst">QA-Analyst</option>
+<option value = "programmer">Programmer</option>
+<option value = "others">Others</option>
 </select><br/><br/>
-
-<span>Profession:</span><br/>
-<label><input value = "IT" type = "radio" ng-model = "employee.itprofession"/>IT</label><br/>
-<label><input value = "Non-IT" type = "radio" ng-model = "employee.nonitprofession"/>Non-IT</label>
-<br/>
-<label><input value = "Others" type = "radio" ng-model = "employee.othersprofession"/>Others</label>
-<br><br/>
-
-<span>Designation</span><br/>
-<label><input type = "checkbox" ng-model = "employee.developer">Developer</label><br/>
-<label><input type = "checkbox" ng-model = "employee.qa_analyst">QA-Analyst</label><br/>
-<label><input type = "checkbox" ng-model = "employee.programmer">Programmer</label><br/>
-<label><input type = "checkbox" ng-model = "employee.others">Others</label><br/><br/>
 
 <button ng-click = "saveEmployee(employeeForm)" ng-disabled = "employeeForm.$invalid">Submit</button>
 
-<input type = "reset" ng-click = "resetform()" value = "Reset"/>
+<input type="reset" ng-click="resetForm()" value="Reset" />
 </form>
 

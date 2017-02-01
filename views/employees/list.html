@@ -8,7 +8,6 @@
           <th>Last Name</th>
           <th>Email</th> 
           <th>DOB</th>  
-          <th>Profession</th>
           <th>Designation</th>
           <th>Actions</th>
         </tr>
@@ -16,8 +15,7 @@
           <td>{{ emp.firstName }}</td>  
           <td>{{ emp.lastName }}</td>  
           <td>{{ emp.email }}</td>  
-          <td>{{ emp.dob}}</td>  
-          <td>{{ emp.profession}}</td>  
+          <td>{{ emp.dob | date :  "dd/MM/y" }}</td>   
           <td>{{ emp.designation}}</td> 
           <td><a ui-sref="employees_edit({id: $index})">Edit</a></td> 
         </tr>  

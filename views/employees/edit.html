@@ -1,11 +1,60 @@
   <div>
-    <form name = employeeForm>
-    <label>Add New:</label><br/><br/>
-        <input type = "text" placeholder = "First Name" ng-model = "employee.firstName"/><br/><br/>
-        <input type = "text" placeholder = "Last Name" ng-model = "employee.lastName"/><br/><br/>
-        <input type = "email" placeholder = "Email" ng-model = "employee.email"/><br/><br/>
-        <input type = "date" placeholder = "DOB" ng-model = "employee.dob"/><br/><br/>
+ <h2>Update Employee information</h2>
+    <form name = "employeeForm">
+   <div>
+    <label>First Name:</label>
+    <input type = "text" name = "userFirstName" ng-model = "employee.firstName"  ng-pattern = "/[a-zA-Z]/" required />
+    <div ng-messages = "employeeForm.userFirstName.$error">
+      <div ng-message = "required">*First Name is required</div><br/>
+      <div ng-message = "pattern">*First Name is invalid</div>
+    </div>
+  </div>
 
-        <button ng-click = "updateEmployee(employeeForm)" ng-disabled = "employeeForm.$invalid">Update</button>
-        </form>
+  <label>Last Name:</label>
+  <input type = "text" name="userLastName" id="userLastName" ng-model = "employee.lastName" ng-pattern = "/[a-zA-Z]/" required />
+  <div ng-messages = "employeeForm.userLastName.$error">
+    <div ng-message = "required">*Last Name is required</div><br/>
+     <div ng-message = "pattern">*Last Name is invalid</div>
+  </div>
+
+  <label>Email ID:</label>
+  <input type = "email" name = "userEmail" ng-model = "employee.email" required />
+  <div ng-messages = "employeeForm.userEmail.$error">
+    <div ng-message = "required">*Email is required</div><br/>
+    <div ng-message = "email">*Your email id is invalid</div>
+  </div>
+
+<label>Enter Password:</label>
+<input type = "password" id = "password" name = "employee.enterpassword" ng-model = "employee.enterpassword" ng-pattern = "/^[0-9a-zA-Z]+$/" required />
+<div ng-messages = "employeeForm.password.$error">
+  <div ng-message = "name">*Your password is invalid</div><br/>
+  <div ng-message = "pattern">*Your password is invalid</div>
+</div>
+
+
+
+<label>DOB:</label><br/>
+<input type = "date" id = "dob" name = "employee.dob" ng-model = "employee.dob"/><br/><br/>
+
+<label>Gender:</label><br/>
+<label><input value = "male" type = "radio" name="gender" ng-model = "employee.gender"/>Male</label>
+<label><input value = "female" type = "radio" name="gender" ng-model = "employee.gender"/>Female</label><br/><br/>
+
+
+
+<label>Designation:</label><br/>
+<select id = "designation" ng-model = "employee.designation">
+<option value = "developer">Developer</option>
+<option value = "qa_analyst">QA-Analyst</option>
+<option value = "programmer">Programmer</option>
+<option value = "others">Others</option>
+</select><br/><br/>
+
+<button ng-click = "updateEmployee(employeeForm)" ng-disabled = "employeeForm.$invalid">Update</button>
+
+<input type="reset" ng-click="resetForm()" value="Reset" />
+</form>
+
+        
+
        

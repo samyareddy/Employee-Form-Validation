@@ -3,8 +3,8 @@ app.controller('employeesCtrl', function($scope, $state, EmployeeService, $state
 	console.log("Hello")
 
 
-        $scope.saveEmployee = function(formname){
-			console.log($scope.employee);
+        $scope.saveEmployee = function(){
+
 			EmployeeService.saveEmployee($scope.employee);
 			$state.go("employees");
 	    }
@@ -19,7 +19,11 @@ app.controller('employeesCtrl', function($scope, $state, EmployeeService, $state
 		  $state.go("employees")
 	    }
 
-   });
+ 	     $scope.deleteEmployee = function (index) {
+             EmployeeService.deleteEmployee(index);
+          };    
+
+  });
 
 
 

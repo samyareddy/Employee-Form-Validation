@@ -19,5 +19,12 @@ app.factory('EmployeeService',function() {
     	return employeeList[index] = employee;
     }
 
+    factory.deleteEmployee = function(index){
+        return employeeList.splice(index, 1);
+    }
+
     return factory;
+
+
+
 });

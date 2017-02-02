@@ -2,6 +2,7 @@
 <h1>Welcome To Navtech!</h1>
 <h2>Please Enter The Details Below:</h2>
 <form name = "employeeForm">
+ 
    <div>
     <label>First Name:</label>
     <input type = "text" name = "userFirstName" ng-model = "employee.firstName"  ng-pattern = "/[a-zA-Z]/" required />
@@ -25,12 +26,23 @@
     <div ng-message = "email">*Your email id is invalid</div>
   </div>
 
-<label>Enter Password:</label>
-<input type = "password" id = "password" name = "employee.enterpassword" ng-model = "employee.enterpassword" ng-pattern = "/^[0-9a-zA-Z]+$/" required />
-<div ng-messages = "employeeForm.password.$error">
-  <div ng-message = "name">*Your password is invalid</div><br/>
-  <div ng-message = "pattern">*Your password is invalid</div>
-</div>
+       <div>
+     <label>Password:</label>
+      <input type="password" name="password"  ng-model="employee.password" required />
+      <div ng-messages = "employeeForm.password.$error">
+        <div ng-message = "required">*Password is required</div><br/>
+      </div>
+    </div><br/>
+      <div>
+          <label>Confirm Password:</label>
+          <input type="password" name="confirmPassword" ng-model="employee.confirmPassword" 
+                 required compare-to='employee.password' />
+          <div ng-messages = "employeeForm.confirmPassword.$error">
+            <div ng-message = "required">*Confirm Password is required</div><br/>
+            <div ng-message = "compareTo">*Confirm Password does not match</div><br/>
+            
+          </div>
+      </div>
 
 
 <label>DOB:</label><br/>
@@ -50,7 +62,7 @@
 <option value = "others">Others</option>
 </select><br/><br/>
 
-<button ng-click = "saveEmployee(employeeForm)" ng-disabled = "employeeForm.$invalid">Submit</button>
+<button ng-click = "saveEmployee()" ng-disabled = "employeeForm.$invalid">Submit</button>
 
 <input type="reset" ng-click="resetForm()" value="Reset" />
 </form>

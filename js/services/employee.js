@@ -5,11 +5,11 @@ app.factory('EmployeeService',function() {
     var employeeList = []; 
             
     factory.saveEmployee = function(employee){
-        
+        employeeList =  JSON.parse(localStorage.getItem('employeeList')); 
         employeeList.push(employee);
-      employeeList = JSON.stringify(employeeList);
+      //employeeList = JSON.stringify(employeeList);
 
-      localStorage.setItem('employeeList', employeeList);
+      localStorage.setItem('employeeList', JSON.stringify(employeeList));
        }
     
        factory.employeeDetails = function(){
@@ -17,7 +17,7 @@ app.factory('EmployeeService',function() {
        var employeeList =  JSON.parse(localStorage.getItem('employeeList'));
        console.log(JSON.parse(localStorage.getItem('employeeList')));
        return employeeList;
-    }
+       }
 
 
     factory.getEmployee = function(index){

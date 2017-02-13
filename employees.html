@@ -1,11 +1,11 @@
 <body style = "background-color:#DDE4E9; font-family:arial;">              
   <fieldset style = "background-color:#DDE4E9;">                                        
   <div ng-app = "employeeDemoApp">       
-    <div ng-controller = "employeeCtrl">       
+    <div ng-controller = "employeesCtrl">       
       <table>  
         <th>First Name</th><th>Last Name</th><th>Email ID</th> <th>DOB</th>  
         <th>Profession</th><th>Designation</th> 
-        <tr ng-repeat = "emp in employees">  
+        <tr ng-repeat = "emp in employeeList">  
           <td>{{ emp.firstName }}</td>  
           <td>{{ emp.lastName }}</td>  
           <td>{{ emp.emailid }}</td>  

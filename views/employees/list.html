@@ -12,11 +12,11 @@
           <th>Actions</th>
           <th>Actions</th>
         </tr>
-        <tr ng-repeat = "emp in employeeslist">  
+        <tr ng-repeat = "emp in employeeList">  
           <td>{{ emp.firstName }}</td>  
           <td>{{ emp.lastName }}</td>  
           <td>{{ emp.email }}</td>  
-          <td>{{ emp.dob | date :  "dd/MM/y" }}</td>   
+          <td>{{ emp.dob | date :  "dd/MM/yyyy" }}</td>   
           <td>{{ emp.designation}}</td> 
           <td><a ui-sref="employees_edit({id: $index})">Edit</a></td> 
            <td><a ng-click="deleteEmployee($index)">Delete</a></td>

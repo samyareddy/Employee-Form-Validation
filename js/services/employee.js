@@ -5,34 +5,54 @@ app.factory('EmployeeService',function() {
     var employeeList = []; 
             
     factory.saveEmployee = function(employee){
-        employeeList =  JSON.parse(localStorage.getItem('employeeList')); 
-        employeeList.push(employee);
-      //employeeList = JSON.stringify(employeeList);
 
+
+     employeeList =  JSON.parse(localStorage.getItem('employeeList')); 
+     console.log(angular.copy(employeeList));
+     if(employeeList == null){
+      employeeList = [];
+     }
+     employeeList.push(employee);
+       console.log(angular.copy(employeeList));
       localStorage.setItem('employeeList', JSON.stringify(employeeList));
+     
        }
     
        factory.employeeDetails = function(){
    
        var employeeList =  JSON.parse(localStorage.getItem('employeeList'));
-       console.log(JSON.parse(localStorage.getItem('employeeList')));
+       console.log(angular.copy(employeeList));
        return employeeList;
        }
 
 
-    factory.getEmployee = function(index){
-       
+      factory.getEmployee = function(index){
+     
+       var employeeList =  JSON.parse(localStorage.getItem('employeeList'));
+      console.log(angular.copy(employeeList));
+
        return employeeList[index];
     }
     
 
     factory.updateEmployee = function(index, employee){
+
+      var employeeList =  JSON.parse(localStorage.getItem('employeeList'));
+     console.log(angular.copy(employeeList));
     	
-    	return employeeList[index] = employee;
+     employeeList[index] = employee ;
+     localStorage.setItem('employeeList', JSON.stringify(employeeList));
     }
 
-    factory.deleteEmployee = function(index){
-        return employeeList.splice(index, 1);
+     factory.deleteEmployee = function(index){
+    
+
+        var employeeList =  JSON.parse(localStorage.getItem('employeeList'));
+        console.log(angular.copy(employeeList));
+        employeeList.splice(index, 1);
+        console.log(angular.copy(employeeList));
+        localStorage.setItem('employeeList', JSON.stringify(employeeList));
+        return employeeList;
     }
 
     return factory;

@@ -4,7 +4,10 @@ app.controller('employeesCtrl', function($scope, $state, EmployeeService, $state
 
 
       $scope.saveEmployee = function(){
+
+
   			EmployeeService.saveEmployee($scope.employee);
+
   			$state.go("employees");
 	   
      }
@@ -13,15 +16,19 @@ app.controller('employeesCtrl', function($scope, $state, EmployeeService, $state
     
        if($stateParams && $stateParams.id){
            $scope.employee = EmployeeService.getEmployee($stateParams.id);
+            $scope.employee.dob = new Date( $scope.employee.dob)
        }
 
       $scope.updateEmployee = function(req){
       EmployeeService.updateEmployee($stateParams.id, $scope.employee);
-		  $state.go("employees")
-	    }
+           $state.go("employees")   
+  
+         }
 
  	     $scope.deleteEmployee = function(index){
+        console.log("employee")
              EmployeeService.deleteEmployee(index);
+             $scope.employeeList = EmployeeService.employeeDetails();
           };    
 
   });
